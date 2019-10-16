@@ -1,4 +1,4 @@
-package com.company;
+
 
 import java.util.PriorityQueue;
 import java.util.Comparator;
@@ -19,14 +19,14 @@ public class AStar {
     Cell end;
     int grid_height;
     int grid_width;
+    int[][] maze;
 
-    public AStar() {
-        int[][] maze_in = {{0,0,0},
-                {0,0,0},
-                {0,1,0},
-                {0,0,0},
-                {0,0,0}};
+    public AStar(int[][] maze_in, int sx, int sy, int ex, int ey, String dir) {
+        maze = maze_in;
         init_grid(maze_in);
+        start = get_cell(sx,sy);
+        end = get_cell(ex,ey);
+        start.setDirection(dir);
     }
 
 
@@ -46,9 +46,6 @@ public class AStar {
                 reachable = true;
             }
         }
-
-        start = get_cell(0,0);
-        end = get_cell(2,4);
     }
 
     //Calculate the heuristic (which is calculated from the distance to the
@@ -155,7 +152,6 @@ public class AStar {
     public void process() {
        // Path path_add = new Path(opened, start.getf(), start);
         //heapq.put(opened, start);
-        start.setDirection("E");
         opened.add(start);
 
         while(true) {
