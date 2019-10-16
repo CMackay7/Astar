@@ -1,1 +1,3 @@
 # Astar
+
+Run TestThat
