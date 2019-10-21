@@ -81,8 +81,9 @@ public class AStar {
 
         return cell_list;
     }
-
-    public void display_path() {
+//0631
+    public String display_path() {
+        String to_return = "";
         Cell cell = end;
         Stack<String> direction_queue = new Stack<>();
 
@@ -94,8 +95,10 @@ public class AStar {
         int length = direction_queue.size();
 
         for(int i = 0; i < length; i++) {
-            System.out.println(direction_queue.pop());
+            to_return = to_return + direction_queue.pop();
         }
+
+        return to_return;
 
     }
 
@@ -149,7 +152,7 @@ public class AStar {
        return "s";
     }
 
-    public void process() {
+    public String process() {
        // Path path_add = new Path(opened, start.getf(), start);
         //heapq.put(opened, start);
         Boolean running = true;
@@ -189,10 +192,10 @@ public class AStar {
 
             //cell
         if(running){
-            display_path();
+            return(display_path().toLowerCase());
 
         } else {
-            System.out.println("No path found");
+            return("No path found");
         }
     }
 
