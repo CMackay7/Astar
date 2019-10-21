@@ -152,9 +152,16 @@ public class AStar {
     public void process() {
        // Path path_add = new Path(opened, start.getf(), start);
         //heapq.put(opened, start);
+        Boolean running = true;
         opened.add(start);
 
         while(true) {
+
+            if(opened.size() == 0) {
+                running = false;
+                break;
+            }
+
             Cell heappop = opened.poll(); //heapq.get(opened);
 
             closed.add(heappop);
@@ -179,8 +186,14 @@ public class AStar {
                 }
             }
         }
+
             //cell
-        display_path();
+        if(running){
+            display_path();
+
+        } else {
+            System.out.println("No path found");
+        }
     }
 
 
